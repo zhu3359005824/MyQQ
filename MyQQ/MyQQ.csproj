@@ -157,6 +157,13 @@
   <ItemGroup>
     <None Include="MyQQ_Resource\界面设计\申请账号界面\01a4aa5cd0c6d1a801214168510470.png%402o.png" />
     <None Include="MyQQ_Resource\界面设计\申请账号界面\1.png" />
+    <None Include="MyQQ_Resource\界面设计\主界面\Snipaste_2024-04-20_14-42-31.png" />
+    <None Include="MyQQ_Resource\界面设计\主界面\d2d20f8a2b34a59312e9f676b6c3cc44.jpg" />
+    <None Include="MyQQ_Resource\界面设计\主界面\92174dbbf82064fbb166b1978e6104a354e96fc7.jpg" />
+    <None Include="MyQQ_Resource\头像\4.jpeg" />
+    <None Include="MyQQ_Resource\图标\个人信息.png" />
+    <None Include="MyQQ_Resource\图标\搜索.png" />
+    <None Include="MyQQ_Resource\图标\添加好友.png" />
     <Content Include="MyQQ_Resource\界面设计\申请账号界面\AzurLane_ankeleiqi_2.png" />
     <Content Include="MyQQ_Resource\界面设计\登陆界面\登录界面.png" />
   </ItemGroup>

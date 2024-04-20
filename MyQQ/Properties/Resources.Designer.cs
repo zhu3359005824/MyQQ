@@ -83,9 +83,79 @@ namespace MyQQ.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap _4 {
+            get {
+                object obj = ResourceManager.GetObject("4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _92174dbbf82064fbb166b1978e6104a354e96fc7 {
+            get {
+                object obj = ResourceManager.GetObject("92174dbbf82064fbb166b1978e6104a354e96fc7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap AzurLane_ankeleiqi_2 {
             get {
                 object obj = ResourceManager.GetObject("AzurLane_ankeleiqi_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap d2d20f8a2b34a59312e9f676b6c3cc44 {
+            get {
+                object obj = ResourceManager.GetObject("d2d20f8a2b34a59312e9f676b6c3cc44", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Snipaste_2024_04_20_14_42_31 {
+            get {
+                object obj = ResourceManager.GetObject("Snipaste_2024-04-20_14-42-31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 个人信息 {
+            get {
+                object obj = ResourceManager.GetObject("个人信息", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 搜索 {
+            get {
+                object obj = ResourceManager.GetObject("搜索", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 添加好友 {
+            get {
+                object obj = ResourceManager.GetObject("添加好友", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
