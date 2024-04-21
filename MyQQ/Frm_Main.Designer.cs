@@ -117,6 +117,7 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
+            this.lbName.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbName.Location = new System.Drawing.Point(189, 69);
             this.lbName.Name = "lbName";
@@ -140,6 +141,7 @@
             this.lvFriend.Size = new System.Drawing.Size(572, 758);
             this.lvFriend.TabIndex = 6;
             this.lvFriend.UseCompatibleStateImageBehavior = false;
+            this.lvFriend.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvFriend_MouseDoubleClick);
             // 
             // cmsFriendList
             // 
