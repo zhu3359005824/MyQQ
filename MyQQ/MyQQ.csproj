@@ -104,6 +104,12 @@
     <Compile Include="Frm_Register.Designer.cs">
       <DependentUpon>Frm_Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Chat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Chat.Designer.cs">
+      <DependentUpon>Frm_Chat.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserDataOperator.cs" />
     <Compile Include="Frm_Login.cs">
       <SubType>Form</SubType>
@@ -164,6 +170,7 @@
     <None Include="MyQQ_Resource\图标\个人信息.png" />
     <None Include="MyQQ_Resource\图标\搜索.png" />
     <None Include="MyQQ_Resource\图标\添加好友.png" />
+    <None Include="MyQQ_Resource\图标\个人信息_爱给网_aigei_com.png" />
     <Content Include="MyQQ_Resource\界面设计\申请账号界面\AzurLane_ankeleiqi_2.png" />
     <Content Include="MyQQ_Resource\界面设计\登陆界面\登录界面.png" />
   </ItemGroup>

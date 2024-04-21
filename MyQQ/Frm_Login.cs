@@ -102,6 +102,7 @@ namespace MyQQ
 
                        
                         tag = true;
+                        PublicClass.loginID = item.Key;
                         Frm_Main frm_Main = new Frm_Main();
                         frm_Main.Show();
                         this.Visible = false;

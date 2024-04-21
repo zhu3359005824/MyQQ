@@ -149,5 +149,15 @@ namespace MyQQ
             
         }
 
+        //获取数据库中查询到的信息类 MySqlDataReader
+        public MySqlDataReader GetDataReader(string sql)
+        {
+            command = new MySqlCommand(sql, connection);
+            connection.Open();
+            SqlResult= command.ExecuteReader();
+            return SqlResult;
+
+        }
+
     }
 }

@@ -143,6 +143,16 @@ namespace MyQQ.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 个人信息_爱给网_aigei_com {
+            get {
+                object obj = ResourceManager.GetObject("个人信息_爱给网_aigei_com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 搜索 {
             get {
                 object obj = ResourceManager.GetObject("搜索", resourceCulture);

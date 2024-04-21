@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,106 @@ namespace MyQQ
         {
             InitializeComponent();
         }
+        //消息的发送者
+        int fromUserID;
+        //
+        int friendHeadID;
 
+        int messageImageIndex = 0;
+
+        public static string name = "";
+        public static string strFlag = "[离线]";
+
+        UserDataOperator mainFormDataOperator = new UserDataOperator();
+
+        //显示登陆账户的 头像,昵称,账号信息
+        public void ShowInfo()
+        {
+            int headID = 0;
+            string sql = "select Name,HeadID from myqq_user where ID=" + PublicClass.loginID + "";
+            MySqlDataReader sqlDataReader = mainFormDataOperator.GetDataReader(sql);
+            if (sqlDataReader.Read())
+            {
+                if (!(sqlDataReader["Name"] is DBNull))
+                {
+                    name = sqlDataReader["Name"].ToString();
+                }
+                headID = Convert.ToInt32(sqlDataReader["HeadID"]);
+            }
+            sqlDataReader.Close();
+            UserDataOperator.connection.Close();
+            this.Text = PublicClass.loginID.ToString();
+            pboxHead.Image = imageListHead.Images[headID];
+            lbName.Text = name + "(" + PublicClass.loginID + ")";
+        }
+        ////显示好友列表
+        private void ShowFriendList()
+        {
+            try
+            {
+                lvFriend.Items.Clear();
+                lvFriend.View = View.Details; // 确保设置了 View 属性
+
+                lvFriend.Columns.Add("好友头像", 150, HorizontalAlignment.Left);
+
+
+                lvFriend.Columns.Add("好友名称", 50, HorizontalAlignment.Left);
+                lvFriend.Columns.Add("状态", 50, HorizontalAlignment.Left);
+
+
+
+
+
+                lvFriend.SmallImageList = imageListHead;
+
+                // 使用参数化查询来防止SQL注入
+                string sql = "SELECT f.FriendID, f.FriendHeadID, f.FriendFlag, u.Name AS FriendName " +
+                             "FROM myqq_user_friend f " +
+                             "JOIN myqq_user u ON f.FriendID = u.ID " +
+                             "WHERE f.ID = @UserID";
+                MySqlCommand cmd = new MySqlCommand(sql, UserDataOperator.connection);
+                cmd.Parameters.AddWithValue("@UserID", PublicClass.loginID);
+
+                // 打开数据库连接
+                UserDataOperator.connection.Open();
+                using (MySqlDataReader mySqlDataReader = cmd.ExecuteReader())
+                {
+                    int i = lvFriend.Items.Count;
+                    while (mySqlDataReader.Read())
+                    {
+                        string strFriendName = mySqlDataReader["FriendName"].ToString();
+                        string strFriendFlag = mySqlDataReader["FriendFlag"].ToString();
+                        string strStatus = strFriendFlag == "n" ? "[离线]" : "[在线]";
+
+                        // 添加项到 ListView
+                        ListViewItem lvi = new ListViewItem(new string[] { strFriendName, strStatus });
+                        lvFriend.Items.Add(lvi);
+                        lvi.ImageIndex = Convert.ToInt32(mySqlDataReader["FriendHeadID"]);
+                        lvFriend.Items[i].Group = lvFriend.Groups[0];
+                        i++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // 异常处理
+                Console.WriteLine($"发生错误：{ex.Message}");
+            }
+            finally
+            {
+                // 确保数据库连接被关闭
+                if (UserDataOperator.connection.State == System.Data.ConnectionState.Open)
+                {
+                    UserDataOperator.connection.Close();
+                }
+            }
+        }
+
+       
         private void Frm_Main_Load(object sender, EventArgs e)
         {
-
+            ShowInfo();
+            ShowFriendList();
         }
 
         private void Frm_Main_FormClosed(object sender, FormClosedEventArgs e)

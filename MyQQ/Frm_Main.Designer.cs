@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Main));
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("好友列表", System.Windows.Forms.HorizontalAlignment.Left);
             this.imageListHead = new System.Windows.Forms.ImageList(this.components);
             this.imageListMessage = new System.Windows.Forms.ImageList(this.components);
             this.tmMessage = new System.Windows.Forms.Timer(this.components);
@@ -127,6 +128,10 @@
             // 
             this.lvFriend.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lvFriend.ContextMenuStrip = this.cmsFriendList;
+            listViewGroup1.Header = "好友列表";
+            listViewGroup1.Name = "好友列表";
+            this.lvFriend.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1});
             this.lvFriend.HideSelection = false;
             this.lvFriend.LargeImageList = this.imageListHead;
             this.lvFriend.Location = new System.Drawing.Point(-5, 229);
