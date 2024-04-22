@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,6 +128,33 @@ namespace MyQQ.MyQQ_Resource.头像
         private void tmShowMessage_Tick(object sender, EventArgs e)
         {
             ShowMessage();
+        }
+
+        private void btnShowAllMessage_Click(object sender, EventArgs e)
+        {
+            rtbMessage.Clear();
+            int messageID ;
+            string message;
+            string messageTime;
+            string messageSendName="";
+
+            string sql = "SELECT  m.FromUserID, u.`Name` AS SenderName, m.Message,m.MessageTime FROM myqq_message m JOIN myqq_user u ON m.FromUserID = u.ID WHERE((m.FromUserID = "+friendID+" AND m.ToUserID ="+ PublicClass.loginID+") OR(m.FromUserID = "+PublicClass.loginID+" AND m.ToUserID = "+friendID+"))ORDER BY m.MessageTime ASC"; 
+
+            // SELECT  m.FromUserID, u.`Name` AS SenderName,m.Message,m.MessageTime FROM myqq_message m JOIN myqq_user u ON m.FromUserID = u.ID WHERE ((m.FromUserID = 11111 AND m.ToUserID = 10000) OR(m.FromUserID = 10000 AND m.ToUserID = 11111))ORDER BY m.MessageTime ASC;
+            MySqlDataReader dataReader = dataoperator.GetDataReader(sql);
+            while (dataReader.Read())
+            {
+                messageID = Convert.ToInt32(dataReader["FromUserID"]);
+                message = dataReader["Message"].ToString();
+                messageTime = Convert.ToDateTime(dataReader["MessageTime"]).ToString();
+                messageSendName = dataReader["SenderName"].ToString();
+                
+
+                rtbMessage.AppendText(string.Format("{0} {1}\n  {2}\n", messageSendName, messageTime, message));
+                // rtbMessage.Text = "\n" + friendName + "    " + messageTime + "\n" + message + "";
+            }
+            dataReader.Close();
+            UserDataOperator.connection.Close();
         }
     }
 }

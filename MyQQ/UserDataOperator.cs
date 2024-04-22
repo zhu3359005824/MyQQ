@@ -37,11 +37,13 @@ namespace MyQQ
         //使用记住密码的账户
         public Dictionary<int, string> RememberUser = new Dictionary<int, string>();
 
+        
+        
 
         //首次登陆,获取数据库中账号信息
         public void LoadUserMessage()
         {
-            string search = "select ID,Password from myqq_user ";
+            string search = "select ID,Password,Name from myqq_user ";
            
             connection.Open();
 
@@ -55,6 +57,7 @@ namespace MyQQ
             while(SqlResult.Read())
             {
                 userMessage.Add(Convert.ToInt32( SqlResult[0]), SqlResult[1].ToString());
+               
             }
 
             connection.Close();
@@ -158,7 +161,7 @@ namespace MyQQ
             return SqlResult;
 
         }
-
+        //对数据库进行 增 删 改 操作
         public int ChangeSQL(string sql)
         {
             connection.Open();
@@ -167,5 +170,8 @@ namespace MyQQ
             connection.Close();
             return result;
         }
+        
+        
+       
     }
 }

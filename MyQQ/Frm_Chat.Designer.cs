@@ -39,6 +39,7 @@
             this.rtbSendMessage = new System.Windows.Forms.RichTextBox();
             this.tmShowMessage = new System.Windows.Forms.Timer(this.components);
             this.imageListHead = new System.Windows.Forms.ImageList(this.components);
+            this.btnShowAllMessage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFriendHead)).BeginInit();
             this.SuspendLayout();
@@ -133,12 +134,26 @@
             this.imageListHead.Images.SetKeyName(3, "4.jpeg");
             this.imageListHead.Images.SetKeyName(4, "5.jpeg");
             // 
+            // btnShowAllMessage
+            // 
+            this.btnShowAllMessage.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnShowAllMessage.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnShowAllMessage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnShowAllMessage.Location = new System.Drawing.Point(521, 553);
+            this.btnShowAllMessage.Name = "btnShowAllMessage";
+            this.btnShowAllMessage.Size = new System.Drawing.Size(107, 34);
+            this.btnShowAllMessage.TabIndex = 7;
+            this.btnShowAllMessage.Text = "消息记录";
+            this.btnShowAllMessage.UseVisualStyleBackColor = false;
+            this.btnShowAllMessage.Click += new System.EventHandler(this.btnShowAllMessage_Click);
+            // 
             // Frm_Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(865, 798);
+            this.Controls.Add(this.btnShowAllMessage);
             this.Controls.Add(this.rtbSendMessage);
             this.Controls.Add(this.rtbMessage);
             this.Controls.Add(this.label1);
@@ -167,5 +182,6 @@
         private System.Windows.Forms.RichTextBox rtbSendMessage;
         private System.Windows.Forms.Timer tmShowMessage;
         private System.Windows.Forms.ImageList imageListHead;
+        private System.Windows.Forms.Button btnShowAllMessage;
     }
 }
