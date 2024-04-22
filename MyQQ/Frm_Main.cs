@@ -113,10 +113,7 @@ namespace MyQQ
             Environment.Exit(0);
         }
 
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -128,18 +125,49 @@ namespace MyQQ
             Application.Exit();
         }
 
-        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
-        {
-
-        }
+      
         Frm_Chat chat;
         private void lvFriend_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if(lvFriend.Items.Count > 0)
             {
-                chat=new Frm_Chat();
-                chat.Show();
+                if(chat == null)
+                {
+                    chat = new Frm_Chat();
+                    //包涵好友名称和状态  XX["在线/离线"]
+                    string getClickMessage= lvFriend.SelectedItems[0].Text;
+                    string getClickName = getClickMessage.Substring(0, 2);
+                    chat.friendName = getClickName;
+
+                    string sql= "SELECT DISTINCT f.FriendID, u.Name AS FriendName ,f.FriendHeadID, f.FriendFlag FROM myqq_user_friend f JOIN myqq_user u ON f.FriendID = u.ID WHERE u.Name = " +"'"+ chat.friendName+"'";
+                  MySqlDataReader dataReader=  mainFormDataOperator.GetDataReader(sql);
+
+                    while (dataReader.Read())
+                    {
+                        chat.friendID = Convert.ToInt32(dataReader["FriendID"]);
+                        chat.friendHeadID = Convert.ToInt32(dataReader["FriendHeadID"]);
+                        chat.friendFlag = dataReader["FriendFlag"].ToString();
+                    }
+                    dataReader.Close();
+                    UserDataOperator.connection.Close();
+
+                    chat.ShowDialog();
+                    chat=null;
+
+                }
+                if(tmChat.Enabled==true)
+                {
+                    tmChat.Stop();
+                   // lvFriend.SelectedItems[0].ImageIndex=friendHeadID;
+                }
+                
+               
             } 
+        }
+
+        private void tmMessage_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

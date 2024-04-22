@@ -18,6 +18,23 @@ namespace MyQQ.MyQQ_Resource.头像
         }
         public int friendID = 0;
         public string friendName;
-        public int headID;
+        public int friendHeadID;
+        public string friendFlag;
+
+
+
+
+        private void Frm_Chat_Load(object sender, EventArgs e)
+        {
+            this.Text = "与" + friendName + "聊天中...";
+            lbChatFriendName.Text = friendName+"("+friendID+")";
+            pbFriendHead.Image = imageListHead.Images[friendHeadID];
+            rtbMessage.ScrollToCaret();
+        }
+
+        private void lbChatFriendName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
