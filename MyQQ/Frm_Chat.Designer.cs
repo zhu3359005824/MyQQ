@@ -62,6 +62,7 @@
             this.btnSendMessage.TabIndex = 1;
             this.btnSendMessage.Text = "发送";
             this.btnSendMessage.UseVisualStyleBackColor = false;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // lbChatFriendName
             // 
@@ -94,8 +95,9 @@
             // 
             // rtbMessage
             // 
-            this.rtbMessage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rtbMessage.BackColor = System.Drawing.Color.Azure;
             this.rtbMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtbMessage.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rtbMessage.Location = new System.Drawing.Point(-5, 123);
             this.rtbMessage.Name = "rtbMessage";
             this.rtbMessage.ReadOnly = true;
@@ -106,7 +108,7 @@
             // 
             // rtbSendMessage
             // 
-            this.rtbSendMessage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.rtbSendMessage.BackColor = System.Drawing.Color.Azure;
             this.rtbSendMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbSendMessage.Location = new System.Drawing.Point(12, 530);
             this.rtbSendMessage.Name = "rtbSendMessage";
@@ -119,6 +121,7 @@
             // 
             this.tmShowMessage.Enabled = true;
             this.tmShowMessage.Interval = 2000;
+            this.tmShowMessage.Tick += new System.EventHandler(this.tmShowMessage_Tick);
             // 
             // imageListHead
             // 

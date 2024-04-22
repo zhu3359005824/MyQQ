@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,7 @@ namespace MyQQ.MyQQ_Resource.头像
         private void Frm_Chat_Load(object sender, EventArgs e)
         {
             this.Text = "与" + friendName + "聊天中...";
-            lbChatFriendName.Text = friendName+"("+friendID+")";
+            lbChatFriendName.Text = friendName + "(" + friendID + ")";
             pbFriendHead.Image = imageListHead.Images[friendHeadID];
             rtbMessage.ScrollToCaret();
         }
@@ -35,6 +36,96 @@ namespace MyQQ.MyQQ_Resource.头像
         private void lbChatFriendName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        UserDataOperator dataoperator = new UserDataOperator();
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+
+
+            if (rtbSendMessage.Text == "")
+            {
+                MessageBox.Show("请输入要发送的内容", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                //MessageState 为0,表示未读消息  为1,表示已读消息 
+                //MessageTypeId 为1,表示聊天消息   为0,表示添加好友消息
+                string sql = string.Format("insert into myqq_message (FromUserID,ToUserID,Message,MessageState,MessageTime) values({0},{1},{2},{3},{4})", PublicClass.loginID, friendID, "'" + rtbSendMessage.Text + "'", 0, "'" + DateTime.Now + "'");
+
+                int result = dataoperator.ChangeSQL(sql);
+                //rtbMessage.Text = "\n" + Frm_Main.name + "     " + DateTime.Now + "\n  " + rtbSendMessage.Text + "\n";
+
+                rtbMessage.AppendText(string.Format("{0} {1}\n  {2}\n", Frm_Main.name, DateTime.Now, rtbSendMessage.Text));
+                //发送失败
+                if (result != 1)
+                {
+                    MessageBox.Show("消息发送失败,请重试", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                rtbSendMessage.Text = "";
+                rtbSendMessage.Focus();
+
+
+
+
+            }
+        }
+        //未读信息变已读
+        private void ChangeMessageState(string fromUserID)
+        {
+            string[] messages = fromUserID.Split('_');
+
+            string sql = "update myqq_message set MessageState=1 where FromUserID=";
+
+            foreach(string id in messages)
+            {
+                if (id != "")
+                {
+                    sql += id;
+                    dataoperator.ChangeSQL(sql);
+                }
+            }
+
+
+        }
+        //聊天窗体显示交流信息
+        private void ShowMessage()
+        {
+            //保存发送信息人的ID
+            string messageID = "";
+            string message;
+            string messageTime;
+
+            string sql = "select FromUserID,Message,MessageTime from myqq_message where FromUserID=" + friendID +
+                " and ToUserID=" + PublicClass.loginID + " and MessageState=0";
+            MySqlDataReader dataReader = dataoperator.GetDataReader(sql);
+            while (dataReader.Read())
+            {
+                messageID += dataReader["FromUserID"] + "_";
+                message = dataReader["Message"].ToString();
+                messageTime = Convert.ToDateTime(dataReader["MessageTime"]).ToString();
+
+
+                rtbMessage.AppendText(string.Format("{0} {1}\n  {2}\n", friendName, messageTime, message));
+               // rtbMessage.Text = "\n" + friendName + "    " + messageTime + "\n" + message + "";
+            }
+            dataReader.Close();
+            UserDataOperator.connection.Close();
+            //是否存在信息
+            if(messageID.Length > 1)
+            {
+                messageID.Remove(messageID.Length - 1);//去掉最后的连接符
+                ChangeMessageState(messageID);
+            }
+
+
+
+        }
+
+        private void tmShowMessage_Tick(object sender, EventArgs e)
+        {
+            ShowMessage();
         }
     }
 }

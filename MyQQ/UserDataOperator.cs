@@ -159,5 +159,13 @@ namespace MyQQ
 
         }
 
+        public int ChangeSQL(string sql)
+        {
+            connection.Open();
+            command= new MySqlCommand(sql, connection); 
+             int result= command.ExecuteNonQuery();
+            connection.Close();
+            return result;
+        }
     }
 }
