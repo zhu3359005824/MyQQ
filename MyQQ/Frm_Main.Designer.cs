@@ -33,13 +33,12 @@
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("好友列表", System.Windows.Forms.HorizontalAlignment.Left);
             this.imageListHead = new System.Windows.Forms.ImageList(this.components);
             this.imageListMessage = new System.Windows.Forms.ImageList(this.components);
-            this.tmMessage = new System.Windows.Forms.Timer(this.components);
-            this.tmChat = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pboxHead = new System.Windows.Forms.PictureBox();
             this.lbName = new System.Windows.Forms.Label();
             this.lvFriend = new System.Windows.Forms.ListView();
+            this.tmChat = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxHead)).BeginInit();
@@ -54,22 +53,13 @@
             this.imageListHead.Images.SetKeyName(2, "3.jpg");
             this.imageListHead.Images.SetKeyName(3, "4.jpeg");
             this.imageListHead.Images.SetKeyName(4, "5.jpeg");
+            this.imageListHead.Images.SetKeyName(5, "透明图片.jpg");
             // 
             // imageListMessage
             // 
             this.imageListMessage.ColorDepth = System.Windows.Forms.ColorDepth.Depth16Bit;
             this.imageListMessage.ImageSize = new System.Drawing.Size(24, 24);
             this.imageListMessage.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // tmMessage
-            // 
-            this.tmMessage.Enabled = true;
-            this.tmMessage.Interval = 5000;
-            this.tmMessage.Tick += new System.EventHandler(this.tmMessage_Tick);
-            // 
-            // tmChat
-            // 
-            this.tmChat.Interval = 500;
             // 
             // pictureBox1
             // 
@@ -129,6 +119,10 @@
             this.lvFriend.UseCompatibleStateImageBehavior = false;
             this.lvFriend.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvFriend_MouseDoubleClick);
             // 
+            // tmChat
+            // 
+            this.tmChat.Interval = 1000;
+            // 
             // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -164,12 +158,11 @@
 
         private System.Windows.Forms.ImageList imageListHead;
         private System.Windows.Forms.ImageList imageListMessage;
-        private System.Windows.Forms.Timer tmMessage;
-        private System.Windows.Forms.Timer tmChat;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pboxHead;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.ListView lvFriend;
+        private System.Windows.Forms.Timer tmChat;
     }
 }

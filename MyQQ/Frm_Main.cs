@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,12 +19,7 @@ namespace MyQQ
         {
             InitializeComponent();
         }
-        //消息的发送者
-        int fromUserID;
-        //
-        int friendHeadID;
-
-        int messageImageIndex = 0;
+       
 
         public static string name = "";
         public static string strFlag = "[离线]";
@@ -164,10 +160,7 @@ namespace MyQQ
                
             } 
         }
-
-        private void tmMessage_Tick(object sender, EventArgs e)
-        {
-
-        }
+        
+      
     }
 }

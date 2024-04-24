@@ -88,11 +88,19 @@ namespace MyQQ
         }
 
         //修改账户状态
-        public void SetRememberStatus(int ID)
+        public void SetRememberStatusON(int ID)
         {
             string sql = $"UPDATE myqq_user set Remember='y' where ID={ID} ";
             connection.Open();
             command= new MySqlCommand(sql, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void SetRememberStatusOff(int ID)
+        {
+            string sql = $"UPDATE myqq_user set Remember='n' where ID={ID} ";
+            connection.Open();
+            command = new MySqlCommand(sql, connection);
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -156,8 +164,12 @@ namespace MyQQ
         public MySqlDataReader GetDataReader(string sql)
         {
             command = new MySqlCommand(sql, connection);
-            connection.Open();
-            SqlResult= command.ExecuteReader();
+
+            if (connection.State != ConnectionState.Open)
+            { connection.Open();
+                SqlResult = command.ExecuteReader();
+            }
+           
             return SqlResult;
 
         }

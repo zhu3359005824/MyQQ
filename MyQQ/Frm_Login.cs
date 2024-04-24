@@ -154,7 +154,18 @@ namespace MyQQ
         {
             
             if(username.Text.Length!=0)
-            { SQLOperator.SetRememberStatus(Convert.ToInt32(username.Text)); }
+            {
+                if (cboxRemember.Checked == true)
+                {
+                    SQLOperator.SetRememberStatusON(Convert.ToInt32(username.Text));
+                }
+                if (cboxRemember.Checked == false)
+                {
+                    SQLOperator.SetRememberStatusOff(Convert.ToInt32(username.Text));
+                }
+                
+                
+            }
            
         }
 
