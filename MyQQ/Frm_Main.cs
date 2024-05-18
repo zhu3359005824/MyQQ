@@ -118,7 +118,10 @@ namespace MyQQ
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            
             Application.Exit();
+
+            
         }
 
       
@@ -160,7 +163,15 @@ namespace MyQQ
                
             } 
         }
-        
-      
+
+        private void lvFriend_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

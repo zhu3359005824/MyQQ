@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Main));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("好友列表", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("好友列表", System.Windows.Forms.HorizontalAlignment.Left);
             this.imageListHead = new System.Windows.Forms.ImageList(this.components);
             this.imageListMessage = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,9 +39,14 @@
             this.lbName = new System.Windows.Forms.Label();
             this.lvFriend = new System.Windows.Forms.ListView();
             this.tmChat = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.打开主界面ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxHead)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageListHead
@@ -105,10 +110,10 @@
             // lvFriend
             // 
             this.lvFriend.BackColor = System.Drawing.Color.LightSteelBlue;
-            listViewGroup1.Header = "好友列表";
-            listViewGroup1.Name = "好友列表";
+            listViewGroup2.Header = "好友列表";
+            listViewGroup2.Name = "好友列表";
             this.lvFriend.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup2});
             this.lvFriend.HideSelection = false;
             this.lvFriend.LargeImageList = this.imageListHead;
             this.lvFriend.Location = new System.Drawing.Point(-5, 186);
@@ -117,11 +122,41 @@
             this.lvFriend.Size = new System.Drawing.Size(572, 801);
             this.lvFriend.TabIndex = 6;
             this.lvFriend.UseCompatibleStateImageBehavior = false;
+            this.lvFriend.SelectedIndexChanged += new System.EventHandler(this.lvFriend_SelectedIndexChanged);
             this.lvFriend.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvFriend_MouseDoubleClick);
             // 
             // tmChat
             // 
             this.tmChat.Interval = 1000;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "MyQQ";
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开主界面ToolStripMenuItem,
+            this.退出ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 64);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // 打开主界面ToolStripMenuItem
+            // 
+            this.打开主界面ToolStripMenuItem.Name = "打开主界面ToolStripMenuItem";
+            this.打开主界面ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
+            this.打开主界面ToolStripMenuItem.Text = "打开主界面";
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
+            this.退出ToolStripMenuItem.Text = "退出";
             // 
             // Frm_Main
             // 
@@ -149,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxHead)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +200,9 @@
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.ListView lvFriend;
         private System.Windows.Forms.Timer tmChat;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 打开主界面ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
     }
 }
